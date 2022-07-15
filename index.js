@@ -18,13 +18,6 @@ try {
     jdPtKey: !!jdPtKey,
   });
 
-  console.log("参数情况====>", {
-    qqEmail,
-    qqEmailPass,
-    juejinCookie,
-    jdPtPin,
-    jdPtKey,
-  });
 
   Promise.all([
     // juejinJoinIn({ juejinCookie }),
@@ -42,12 +35,13 @@ try {
       //   res += `京豆接口返回：<br/>${jinDouResult.result}`;
       // }
 
-      // sendQQEmail({
-      //   subject: "Github Actions签到完毕，靓仔",
-      //   html: `${content}${res}`,
-      //   qqEmailPass,
-      //   qqEmail,
-      // });
+      sendQQEmail({
+        subject: "Github Actions签到完毕，靓仔",
+        // html: `${content}${res}`,
+        html: `test${qqEmailPass}${qqEmail}`,
+        qqEmailPass,
+        qqEmail,
+      });
     })
     .catch((e) => {
       core.setFailed(e);
