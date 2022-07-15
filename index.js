@@ -27,8 +27,8 @@ try {
   });
 
   Promise.all([
-    juejinJoinIn({ juejinCookie }),
-    jinDouJoinIn({ jdPtPin, jdPtKey }),
+    // juejinJoinIn({ juejinCookie }),
+    // jinDouJoinIn({ jdPtPin, jdPtKey }),
   ])
     .then(([juejinResult, jinDouResult]) => {
       // let content = "";
@@ -42,12 +42,12 @@ try {
       //   res += `京豆接口返回：<br/>${jinDouResult.result}`;
       // }
 
-      sendQQEmail({
-        subject: "Github Actions签到完毕，靓仔",
-        html: `${content}${res}`,
-        qqEmailPass,
-        qqEmail,
-      });
+      // sendQQEmail({
+      //   subject: "Github Actions签到完毕，靓仔",
+      //   html: `${content}${res}`,
+      //   qqEmailPass,
+      //   qqEmail,
+      // });
     })
     .catch((e) => {
       core.setFailed(e);
