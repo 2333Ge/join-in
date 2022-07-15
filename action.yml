@@ -1,0 +1,24 @@
+name: "sign in"
+description: "掘金签到、京豆签到"
+inputs:
+  qq-email:
+    description: "发送、接受邮件的账号"
+    required: false
+  qq-email-pass:
+    description: "qq邮件授权码"
+    required: false
+  juejin-cookie:
+    description: "掘金cookie"
+    required: false
+  jd-pt-pin:
+    description: "京东pt_pin"
+    required: false
+  jd-pt-key:
+    description: "京东pt_key"
+    required: false
+# outputs:
+#   time: # id of output
+#     description: "The time we greeted you"
+runs:
+  using: "node16"
+  main: "index.js"
