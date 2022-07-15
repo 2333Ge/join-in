@@ -18,7 +18,6 @@ try {
     jdPtKey: !!jdPtKey,
   });
 
-
   Promise.all([
     juejinJoinIn({ juejinCookie }),
     jinDouJoinIn({ jdPtPin, jdPtKey }),
@@ -27,12 +26,12 @@ try {
       let content = "";
       let res = "";
       if (juejinResult) {
-        content += `掘金签到&抽奖结果：<br/>${juejinResult.content}<br/>`;
-        res += `掘金签到&抽奖接口返回：<br/>${juejinResult.result}<br/>`;
+        content += `<h2>掘金签到&抽奖结果</h2><br/>${juejinResult.content}<br/>`;
+        res += `<h2>掘金签到&抽奖接口返回</h2><br/>${juejinResult.result}<br/>`;
       }
       if (jinDouResult) {
-        content += `京豆签到结果：<br/>${jinDouResult.content}<br/>`;
-        res += `京豆接口返回：<br/>${jinDouResult.result}<br/>`;
+        content += `<h2>京豆签到结果</h2><br/>${jinDouResult.content}<br/>`;
+        res += `<h2>京豆接口返回</h2><br/>${jinDouResult.result}<br/>`;
       }
 
       sendQQEmail({
