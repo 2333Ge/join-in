@@ -17,7 +17,7 @@
      
 ## 完整示例
 
-以下示例演示：北京时间，定时每天7点签到
+以下示例演示：定时每天7点(北京时间)签到
 
 ```yml
 name: 签到
@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: 2333Ge/jon-in@master
         with:
-          qq-email: ych.class@qq.com
+          qq-email: ${{secrets.QQ_EMAIL}}
           qq-email-pass: ${{secrets.QQ_EMAIL_PASS}}
           juejin-cookie: ${{secrets.JUEJIN_COOKIE}}
           jd-pt-pin: ${{secrets.JD_PT_PIN}}
