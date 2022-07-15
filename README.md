@@ -30,7 +30,7 @@ jobs:
   join-in-and-send-email:
     runs-on: ubuntu-latest
     steps:
-      - uses: 2333Ge/jon-in@master
+      - uses: 2333Ge/join-in@master
         with:
           qq-email: ${{secrets.QQ_EMAIL}}
           qq-email-pass: ${{secrets.QQ_EMAIL_PASS}}
@@ -42,7 +42,7 @@ jobs:
 
 ## 参考文章
 
-[1] [掘金][juejin]
+[1] [掘金][juejin]  
 [2] [京豆][jindou]
 
 [juejin]:https://juejin.cn/post/7041495891388743716

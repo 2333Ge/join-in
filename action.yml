@@ -16,9 +16,6 @@ inputs:
   jd-pt-key:
     description: "京东pt_key"
     required: false
-# outputs:
-#   time: # id of output
-#     description: "The time we greeted you"
 runs:
   using: "node16"
   main: "index.js"

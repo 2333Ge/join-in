@@ -19,6 +19,7 @@ const submitJingDouApi = async (pt_key, pt_pin) => {
     });
     return data;
   } catch (e) {
+    console.log("签到请求出错====>", e);
     return e;
   }
 };
@@ -32,7 +33,11 @@ const joinIn = async ({
   qqEmail,
   qqEmailPass,
 }) => {
+  console.log("京豆签到start====>");
+
   const result = await submitJingDouApi(pt_key, pt_pin);
+  console.log("api result====>", result);
+
   const { data } = result;
   let title = "京豆签到失败";
   let content = "";
@@ -43,8 +48,6 @@ const joinIn = async ({
   }
 
   const resultHtml = `返回结果:<br/> ${formatObjToHtml(result)}<br/>`;
-
-  console.log("result====>", result);
 
   sendQQEmail({
     subject: title,

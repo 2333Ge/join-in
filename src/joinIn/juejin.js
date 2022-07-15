@@ -35,6 +35,8 @@ const drawAPI = async (cookie) => {
  * 掘金签到并抽奖
  */
 const joinIn = async ({ qqEmail, qqEmailPass, juejinCookie: cookie }) => {
+  console.log("掘金签到start====>");
+
   const checkInData = await checkInAPI(cookie);
   const drawData = await drawAPI(cookie);
 
