@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { sendQQEmail } = require("../utils/email");
 const { formatObjToHtml } = require("../utils/format");
 
 /**
@@ -27,34 +26,26 @@ const submitJingDouApi = async (pt_key, pt_pin) => {
 /**
  * 京豆签到
  */
-const joinIn = async ({
-  jdPtPin: pt_pin,
-  jdPtKey: pt_key,
-  qqEmail,
-  qqEmailPass,
-}) => {
+const joinIn = async ({ jdPtPin, jdPtKey }) => {
+  if (!jdPtPin || !jdPtKey) return;
+
   console.log("京豆签到start====>");
 
-  const result = await submitJingDouApi(pt_key, pt_pin);
+  const result = await submitJingDouApi(jdPtKey, jdPtPin);
   console.log("api result====>", result);
 
   const { data } = result;
-  let title = "京豆签到失败";
-  let content = "";
+  let content = "签到失败";
   if (data) {
     const { tomorrowSendBeans, continuousDays, totalUserBean } = data;
-    title = `京豆连续签到${continuousDays}天`;
     content = `连续签到：${continuousDays}天，当前总豆：${totalUserBean}，明日签到送豆:${tomorrowSendBeans}<br/>`;
   }
 
-  const resultHtml = `返回结果:<br/> ${formatObjToHtml(result)}<br/>`;
-
-  sendQQEmail({
-    subject: title,
-    html: `${content}${resultHtml}`,
-    qqEmailPass,
-    qqEmail,
-  });
+  const resultHtml = `<br/> ${formatObjToHtml(result)}<br/>`;
+  return {
+    content: content,
+    result: resultHtml,
+  };
 };
 
 module.exports.joinIn = joinIn;

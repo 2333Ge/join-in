@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { sendQQEmail } = require("../utils/email");
 const { formatObjToHtml } = require("../utils/format");
 
 /**抽奖 */
@@ -34,20 +33,17 @@ const drawAPI = async (cookie) => {
 /**
  * 掘金签到并抽奖
  */
-const joinIn = async ({ qqEmail, qqEmailPass, juejinCookie: cookie }) => {
+const joinIn = async ({ juejinCookie }) => {
+  if (!juejinCookie) return;
   console.log("掘金签到start====>");
 
-  const checkInData = await checkInAPI(cookie);
-  const drawData = await drawAPI(cookie);
+  const checkInData = await checkInAPI(juejinCookie);
+  const drawData = await drawAPI(juejinCookie);
 
   console.log("api result====>", { checkInData, drawData });
 
   const checkInSuccess = checkInData.data;
   const drawSuccess = drawData.data;
-
-  const title = `掘金签到${checkInSuccess ? "成功" : "失败"}，抽奖${
-    drawSuccess ? "成功" : "失败"
-  }`;
 
   const line1 = checkInSuccess
     ? `签到成功: 今日获得${checkInData.data.incr_point}积分<br/>`
@@ -65,12 +61,10 @@ const joinIn = async ({ qqEmail, qqEmailPass, juejinCookie: cookie }) => {
 
   const line6 = `抽奖返回结果:<br/> ${formatObjToHtml(drawData)}<br/>`;
 
-  sendQQEmail({
-    subject: title,
-    html: `${line1}${line2}${line3}${line4}${line5}${line6}`,
-    qqEmailPass,
-    qqEmail,
-  });
+  return {
+    content: `${line1}${line2}${line3}${line4}`,
+    result: `${line5}${line6}`,
+  };
 };
 
 module.exports.joinIn = joinIn;
