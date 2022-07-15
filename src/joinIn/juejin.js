@@ -40,7 +40,7 @@ const joinIn = async ({ juejinCookie }) => {
   const checkInData = await checkInAPI(juejinCookie);
   const drawData = await drawAPI(juejinCookie);
 
-  console.log("api result====>", { checkInData, drawData });
+  console.log("掘金签到api result====>", { checkInData, drawData });
 
   const checkInSuccess = checkInData.data;
   const drawSuccess = drawData.data;

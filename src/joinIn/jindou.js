@@ -32,7 +32,7 @@ const joinIn = async ({ jdPtPin, jdPtKey }) => {
   console.log("京豆签到start====>");
 
   const result = await submitJingDouApi(jdPtKey, jdPtPin);
-  console.log("api result====>", result);
+  console.log("京豆签到api result====>", result);
 
   const { data } = result;
   let content = "签到失败";

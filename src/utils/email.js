@@ -5,7 +5,7 @@ const nodeMailer = require("nodemailer");
 const sendQQEmail = async ({ subject, html, qqEmailPass, qqEmail }) => {
   const transporter = nodeMailer.createTransport({
     service: "qq",
-    auth: { user: qqEmail, qqEmailPass },
+    auth: { user: qqEmail, pass: qqEmailPass },
   });
   if (!qqEmail || !qqEmailPass) {
     console.log("邮件发送失败====>", "无邮箱");
