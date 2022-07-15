@@ -7,7 +7,7 @@ const sendQQEmail = async ({ subject, html, qqEmailPass, qqEmail }) => {
     service: "qq",
     auth: { user: qqEmail, pass: qqEmailPass },
   });
-  if (!qqEmail || !qqEmailPass) {
+  if (!qqEmail) {
     console.log("邮件发送失败====>", "无邮箱");
     return;
   }

@@ -20,25 +20,24 @@ try {
 
 
   Promise.all([
-    // juejinJoinIn({ juejinCookie }),
-    // jinDouJoinIn({ jdPtPin, jdPtKey }),
+    juejinJoinIn({ juejinCookie }),
+    jinDouJoinIn({ jdPtPin, jdPtKey }),
   ])
     .then(([juejinResult, jinDouResult]) => {
-      // let content = "";
-      // let res = "";
-      // if (juejinResult) {
-      //   content += `掘金签到&抽奖结果：<br/>${juejinResult.content}`;
-      //   res += `掘金签到&抽奖接口返回：<br/>${juejinResult.result}`;
-      // }
-      // if (jinDouResult) {
-      //   content += `京豆签到结果：<br/>${jinDouResult.content}`;
-      //   res += `京豆接口返回：<br/>${jinDouResult.result}`;
-      // }
+      let content = "";
+      let res = "";
+      if (juejinResult) {
+        content += `掘金签到&抽奖结果：<br/>${juejinResult.content}<br/>`;
+        res += `掘金签到&抽奖接口返回：<br/>${juejinResult.result}<br/>`;
+      }
+      if (jinDouResult) {
+        content += `京豆签到结果：<br/>${jinDouResult.content}<br/>`;
+        res += `京豆接口返回：<br/>${jinDouResult.result}<br/>`;
+      }
 
       sendQQEmail({
         subject: "Github Actions签到完毕，靓仔",
-        // html: `${content}${res}`,
-        html: `test${qqEmailPass}${qqEmail}`,
+        html: `${content}${res}`,
         qqEmailPass,
         qqEmail,
       });
