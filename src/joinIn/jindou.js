@@ -38,7 +38,8 @@ const joinIn = async ({ jdPtPin, jdPtKey }) => {
   let content = "签到失败";
   if (data) {
     const { tomorrowSendBeans, continuousDays, totalUserBean } = data;
-    content = `连续签到：${continuousDays}天，当前总豆：${totalUserBean}，明日签到送豆:${tomorrowSendBeans}<br/>`;
+    content = `已连续签到：${continuousDays}天，当前总豆：${totalUserBean}，明日签到送豆:${tomorrowSendBeans}<br/>`;
+    content += continuousDays >= 25 ? "请注意cookie是否快过期，以免断签" : "";
   }
 
   const resultHtml = `<br/> ${formatObjToHtml(result)}<br/>`;

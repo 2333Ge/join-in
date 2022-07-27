@@ -46,7 +46,7 @@ const joinIn = async ({ juejinCookie }) => {
   const drawSuccess = drawData.data;
 
   const line1 = checkInSuccess
-    ? `签到成功: 今日获得${checkInData.data.incr_point}积分<br/>`
+    ? `签到成功: 今日获得${checkInData.data.incr_point}矿石<br/>`
     : "";
 
   const line2 = drawSuccess
