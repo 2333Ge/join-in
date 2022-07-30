@@ -39,7 +39,7 @@ const joinIn = async ({ jdPtPin, jdPtKey }) => {
   if (data) {
     const { tomorrowSendBeans, continuousDays, totalUserBean } = data;
     content = `已连续签到：${continuousDays}天，当前总豆：${totalUserBean}，明日签到送豆:${tomorrowSendBeans}<br/>`;
-    content += continuousDays >= 25 ? "请注意cookie是否快过期，以免断签" : "";
+    content += continuousDays >= 25 ? "<div style='color:red;'>请注意cookie是否快过期，以免断签</div><br/>" : "";
   }
 
   const resultHtml = `<br/> ${formatObjToHtml(result)}<br/>`;
